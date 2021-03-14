@@ -16,5 +16,5 @@
 
 **GitHub**
 
-Cсылка на макет в  [GitHub](https://tinypng.com/)
+Cсылка на проект в  [GitHub](https://yulia-kozlova.github.io/mesto/)
 
