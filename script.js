@@ -16,7 +16,8 @@ openPopupButton.addEventListener('click', function() {
 });
 openPopupButtonPencil.addEventListener('click', function() {
   openPopup();
-});
+});481
+5*
 closePopupButton.addEventListener('click', function(){
   closePopup();
 });
@@ -27,7 +28,7 @@ popupOverlay.addEventListener('click', function(){
 let formElement = document.querySelector('.popup__content');
 let nameInput = formElement.querySelector('.popup__name');
 let jobInput = formElement.querySelector('.popup__job');
-let buttomSave = formElement.querySelector('.popup__button_save');
+let buttomSave = formElement.querySelector('.popup__save');
 let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
 
