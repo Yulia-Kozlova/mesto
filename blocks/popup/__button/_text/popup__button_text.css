@@ -1,0 +1,11 @@
+.popup__button_text {
+  width: 100%;
+  height: 14px;
+  border: none;
+  background: #FFFFFF;
+  box-shadow:0 1px rgba(0, 0, 0, 0.5);
+  padding-bottom: 13px;
+}
+.popup__button_text:first-of-type {
+  margin-bottom: 30px;
+}

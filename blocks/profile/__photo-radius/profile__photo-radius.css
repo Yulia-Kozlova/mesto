@@ -1,0 +1,8 @@
+.profile__photo-radius {
+  box-sizing: border-box;
+  border-radius: 60px;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+}

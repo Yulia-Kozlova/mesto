@@ -1,0 +1,8 @@
+.header {
+  max-height: 200px;
+}
+@media screen and (max-width: 320px) {
+  .header {
+    max-height: 84px;
+  }
+}

@@ -1,0 +1,17 @@
+.profile__buttom-plus {
+  width: 150px;
+  height: 50px;
+  border: 1px solid #FFFFFF;
+  background-color: #000000;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-top: 35px;
+}
+.profile__buttom-plus:hover {
+  opacity: .5;
+}
+@media screen and (max-width: 1050px) {
+  .profile__buttom-plus {
+    width: 282px;
+  }
+}

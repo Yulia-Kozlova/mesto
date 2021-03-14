@@ -1,0 +1,14 @@
+.cards__buttom {
+  background-color: #ffffff;
+  border:  #ffffff;
+  background-image: url(../../../images/heart-vector.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 5px;
+  height: 19px;
+  width: 22px;
+}
+.cards__buttom:hover {
+  opacity: 0.5;
+}
+
