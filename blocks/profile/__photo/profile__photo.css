@@ -1,10 +1,12 @@
 .profile__photo {
   width: 169px;
   height: 128px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  object-fit: contain;
+  object-position: center;
   position: absolute;
   top: -2px;
   left: -25px;
   z-index: -1;
 }
+  /* background-siz: contain;
+  background-repeat: no-repeat; */
