@@ -1,10 +1,10 @@
-.profile__avatar {
+.profile__info {
   display: flex;
   justify-content: start;
 
 }
 @media screen and (max-width: 1050px) {
-  .profile__avatar {
+  .profile__info {
     flex-direction: column;
     justify-content: center;
     align-items: center;

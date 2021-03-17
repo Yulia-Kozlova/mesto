@@ -10,6 +10,7 @@
   font-size: 18px;
   line-height: 22px;
   margin-top: 43px;
+  padding: 0;
 }
 .popup__save:hover {
   opacity: 0.8;

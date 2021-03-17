@@ -7,6 +7,7 @@
   margin-top: 5px;
   height: 19px;
   width: 22px;
+  padding: 0;
 }
 .cards__buttom:hover {
   opacity: 0.5;

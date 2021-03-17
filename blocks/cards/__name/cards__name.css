@@ -3,8 +3,5 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 25px 15px 31px 21px;
-  height: 75px;
-  overflow: hidden;
-  flex-wrap: nowrap;
-  text-overflow: ellipsis;
+  max-height: 75px;
 }
