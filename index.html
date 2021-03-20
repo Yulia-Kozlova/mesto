@@ -9,20 +9,21 @@
 <body class="root">
   <div class="popup">
     <div class="popup__overlay"></div>
-    <form class="popup__content">
-      <button type="button" class="popup__closebutton">
-        <img class="popup__closeicon" src="./images/Close-Icon.png" alt="Закрыть">
+    <form class="popup__content" name="profile-info">
+      <button type="button" class="popup__close-button">
+        <img class="popup__close-icon" src="./images/Close-Icon.png" alt="Закрыть">
       </button>
       <h2 class="popup__header">Редактировать профиль</h2>
-      <input class="popup__text popup__font popup__name" type="text" name="name">
-      <input class="popup__text popup__font popup__job" type="text" name="profession">
+      <div class="popup__input-container">
+        <input class="popup__text popup__input popup__input_type_name" type="text" name="name">
+        <input class="popup__text popup__input popup__input_type_job" type="text" name="profession">
+      </div>
       <button class="popup__save" type="submit">Coхранить</button>
     </form>
   </div>
   <div class="page">
     <header class="header">
       <div class="header__logo"></div>
-      <div class="header__line"></div>
     </header>
     <main class="content">
       <section class="profile">
@@ -33,15 +34,12 @@
           <div class="profile__text">
             <div class="profile__data">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <div class="profile__button-pencil">
-                <input type="image" class="profile__pencil" src="images/pencil.png" alt="Редактировать">
-              </div>
+              <button class="profile__button-pencil"></button>
             </div>
             <p class="profile__profession">Исследователь океана</p>
           </div>
         </div>
         <button type="button" class="profile__button-plus">
-          <img class="profile__plus" src="images/plus.png" alt="Добавить">
         </button>
       </section>
       <section class="cards">
@@ -49,42 +47,42 @@
           <img class="cards__photo" src="images/karachaevsk.png" alt="Карачаевск">
           <div class="cards__name">
             <h3 class="cards__text">Карачаевск</h3>
-            <button type="button" class="cards__buttom"></button>
+            <button type="button" class="cards__button"></button>
           </div>
         </article>
         <article class="cards__container">
           <img class="cards__photo" src="images/elbrus.png" alt="Эльбрус">
           <div class="cards__name">
             <h3 class="cards__text">Гора Эльбрус</h3>
-            <button type="button" class="cards__buttom"></button>
+            <button type="button" class="cards__button"></button>
           </div>
         </article>
         <article class="cards__container">
           <img class="cards__photo" src="images/dombai.png" alt="Домбай">
           <div class="cards__name">
             <h3 class="cards__text">Домбай</h3>
-            <button type="button" class="cards__buttom"></button>
+            <button type="button" class="cards__button"></button>
           </div>
         </article>
         <article class="cards__container">
           <img class="cards__photo" src="images/elbrus.png" alt="Эльбрус">
           <div class="cards__name">
             <h3 class="cards__text"> Гора Эльбрус</h3>
-            <button type="button" class="cards__buttom"></button>
+            <button type="button" class="cards__button"></button>
           </div>
         </article>
         <article class="cards__container">
           <img class="cards__photo" src="images/dombai.png" alt="Домбай">
           <div class="cards__name">
             <h3 class="cards__text">Домбай</h3>
-            <button type="button" class="cards__buttom"></button>
+            <button type="button" class="cards__button"></button>
           </div>
         </article>
         <article class="cards__container">
           <img class="cards__photo" src="images/karachaevsk.png" alt="Карачаевск">
           <div class="cards__name">
             <h3 class="cards__text">Карачаевo-Черкecсия</h3>
-            <button type="button" class="cards__buttom"></button>
+            <button type="button" class="cards__button"></button>
           </div>
         </article>
       </section>

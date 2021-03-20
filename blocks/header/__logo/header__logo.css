@@ -9,14 +9,12 @@
   width: 142px;
   height: 33px;
 }
-.header__logo:hover {
-  background-image: url(../../../images/logoblack.png);
-}
 @media screen and (max-width: 1050px) {
   .header__logo {
     margin-left: 27px;
     margin-top: 28px;
     margin-bottom: 31px;
     width: 104px;
+    height: 24px;
   }
 }

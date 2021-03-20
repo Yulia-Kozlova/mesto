@@ -1,8 +1,8 @@
-.popup__closeicon {
+.popup__close-icon {
   height: 100%;
   width: 100%;
   object-fit: contain;
 }
-.popup__closeicon:hover {
+.popup__close-icon:hover {
   opacity: 0.6;
 }

@@ -5,7 +5,9 @@
   background: #FFFFFF;
   box-shadow:0 1px rgba(0, 0, 0, 0.5);
   padding-bottom: 13px;
-}
-.popup__text:first-of-type {
-  margin-bottom: 30px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: start;
 }
