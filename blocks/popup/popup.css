@@ -7,4 +7,5 @@
   color: #000000;
   visibility: hidden;
   z-index: 1;
+  transition: visibility 0.3s linear, top 0.3s step-end;
 }

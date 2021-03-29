@@ -1,0 +1,8 @@
+.popup__figure {
+  box-sizing: border-box;
+  position: absolute;
+  margin: 0 auto;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}

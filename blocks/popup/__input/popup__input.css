@@ -10,4 +10,10 @@
   font-size: 14px;
   line-height: 17px;
   text-align: start;
+  color: #C4C4C4;
 }
+.popup__input:focus {
+  outline: none;
+  border: none;
+  color: #000000;
+ }
