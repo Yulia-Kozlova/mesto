@@ -124,6 +124,26 @@ function imageClickHandler (element) {
   toggleModalWindow(popupTypeImage);
 }
 
+function closePopup (modal) {
+  modal.classList.remove('popup_opened')
+}
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    closePopup(popupTypeProfile)
+  }
+});
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    closePopup(popupNewCard)
+  }
+});
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    closePopup(popupTypeImage)
+  }
+});
+
 openPopupButtonProfile.addEventListener('click', openPopupProfile);
 openPopupButtonNewCard.addEventListener('click', () => toggleModalWindow(popupNewCard));
 
@@ -134,3 +154,4 @@ popupImageCloseButton.addEventListener('click', () => toggleModalWindow(popupTyp
 popupOverlayProfile.addEventListener('click', () => toggleModalWindow(popupTypeProfile));
 popupOverlayNewCard.addEventListener('click', () => toggleModalWindow(popupNewCard));
 popupOverlayImage.addEventListener('click', () => toggleModalWindow(popupTypeImage));
+
