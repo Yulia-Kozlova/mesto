@@ -8,56 +8,6 @@
     <link rel="validate" href="validate.js">
 </head>
 <body class="root">
-<!-- Редактирование профиля -->
-  <div class="popup popup_type_profile">
-    <div class="popup__overlay  popup__overlay_type_profile"></div>
-    <form class="popup__form popup__content popup__content_type_profile" name="profile-info" novalidate>
-      <button type="button" class="popup__close-button popup__close-button_type_profile">
-        <img class="popup__close-icon" src="./images/Close-Icon.png" alt="Закрыть">
-      </button>
-      <h2 class="popup__header popup__header_type_profile">Редактировать профиль</h2>
-      <div class="popup__input-container popup__input-container_type_profile">
-        <input class="popup__input popup__input_type_name" id="popup__name" type="text" placeholder="Имя" name="name" minlength="2" maxlength="40" required>
-        <span class="popup__name-error popup__form-error"></span>
-      </div>
-      <div class="popup__input-container popup__input-container_type_profile">
-        <input class="popup__input popup__input_type_job" id="popup__job" type="text" placeholder="O ceбe" name="profession" minlength="2" maxlength="200" required>
-        <span class="popup__job-error popup__form-error"></span>
-      </div>
-      <button class="popup__button popup__save popup__save_type_name" type="submit">Coхранить</button>
-    </form>
-  </div>
-<!-- добавление карточек -->
-  <div class="popup popup_type_card">
-    <div class="popup__overlay popup__overlay_type_card"></div>
-    <form class="popup__form popup__content popup__content_type_card" name="place-name" novalidate>
-      <button type="button" class="popup__close-button popup__close-button_type_card">
-        <img class="popup__close-icon" src="./images/Close-Icon.png" alt="Закрыть">
-      </button>
-      <h2 class="popup__header popup__header_type_card">Новое место</h2>
-      <div class="popup__input-container popup__input-container_type_card">
-        <input class="popup__input popup__input_type_place"  id="popup__place" placeholder="Название" type="text" name="place" minlength="2" maxlength="30" required>
-        <span class="popup__place-error popup__form-error"></span>
-      </div>
-      <div class="popup__input-container popup__input-container_type_card">
-      <input class="popup__input popup__input_type_link" id="popup__link" placeholder="Ссылка на картинку" type="url" name="link" required>
-      <span class="popup__link-error popup__form-error"></span>
-      </div>
-      <button class="popup__button popup__save popup__save_type_card" type="submit">Coхранить</button>
-    </form>
-  </div>
-<!-- Увеличение изображений -->
-<div class="popup popup_type_image">
-  <div class="popup__overlay popup__overlay_type_image"></div>
-  <figure class="popup__figure">
-    <button type="button" class="popup__close-button popup__close-button_type_image">
-      <img class="popup__close-icon" src="images/Close-Icon.png" alt="Закрыть">
-    </button>
-    <img class="popup__image" src="images/elbrus.png" alt="Фото">
-    <figcaption class="popup__figcaption"></figcaption>
-  </figure>
-</div>
-<!--  -->
   <div class="page">
     <header class="header">
       <div class="header__logo"></div>
@@ -145,7 +95,58 @@
     </article>
   </template>
 
-  <script src="./scripts/script.js" defer></script>
-  <script src="./scripts/validate.js" defer></script>
+<!-- Редактирование профиля -->
+<div class="popup popup_type_profile">
+  <div class="popup__overlay  popup__overlay_type_profile"></div>
+  <form class="popup__form popup__content popup__content_type_profile" name="profile-info" novalidate>
+    <button type="button" class="popup__close-button popup__close-button_type_profile">
+      <img class="popup__close-icon" src="./images/Close-Icon.png" alt="Закрыть">
+    </button>
+    <h2 class="popup__header popup__header_type_profile">Редактировать профиль</h2>
+    <div class="popup__input-container popup__input-container_type_profile">
+      <input class="popup__input popup__input_type_name" id="popup__name" type="text" placeholder="Имя" name="name" minlength="2" maxlength="40" required>
+      <span class="popup__name-error popup__error"></span>
+    </div>
+    <div class="popup__input-container popup__input-container_type_profile">
+      <input class="popup__input popup__input_type_job" id="popup__job" type="text" placeholder="O ceбe" name="profession" minlength="2" maxlength="200" required>
+      <span class="popup__job-error popup__error"></span>
+    </div>
+    <button class="popup__button popup__save popup__save_type_name" type="submit">Coхранить</button>
+  </form>
+</div>
+<!-- добавление карточек -->
+<div class="popup popup_type_card">
+  <div class="popup__overlay popup__overlay_type_card"></div>
+  <form class="popup__form popup__content popup__content_type_card" name="place-name" novalidate>
+    <button type="button" class="popup__close-button popup__close-button_type_card">
+      <img class="popup__close-icon" src="./images/Close-Icon.png" alt="Закрыть">
+    </button>
+    <h2 class="popup__header popup__header_type_card">Новое место</h2>
+    <div class="popup__input-container popup__input-container_type_card">
+      <input class="popup__input popup__input_type_place"  id="popup__place" placeholder="Название" type="text" name="place" minlength="2" maxlength="30" required>
+      <span class="popup__place-error popup__error"></span>
+    </div>
+    <div class="popup__input-container popup__input-container_type_card">
+    <input class="popup__input popup__input_type_link" id="popup__link" placeholder="Ссылка на картинку" type="url" name="link" required>
+    <span class="popup__link-error popup__error"></span>
+    </div>
+    <button class="popup__button popup__save popup__save_type_card" type="submit">Coхранить</button>
+  </form>
+</div>
+<!-- Увеличение изображений -->
+<div class="popup popup_type_image">
+<div class="popup__overlay popup__overlay_type_image"></div>
+<figure class="popup__figure">
+  <button type="button" class="popup__close-button popup__close-button_type_image">
+    <img class="popup__close-icon" src="images/Close-Icon.png" alt="Закрыть">
+  </button>
+  <img class="popup__image" src="images/elbrus.png" alt="Фото">
+  <figcaption class="popup__figcaption"></figcaption>
+</figure>
+</div>
+<!--  -->
+<script src="scripts/initial-сards.js" defer></script>
+<script src="./scripts/script.js" defer></script>
+<script src="./scripts/validate.js" defer></script>
 </body>
 </html>

@@ -26,24 +26,6 @@ const buttomSave = popupTypeProfile.querySelector('.popup__save_type_profile');
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 
-function toggleModalWindow(modal) {
-  modal.classList.toggle('popup_opened')
-}
-
-function openPopupProfile() {
-  toggleModalWindow(popupTypeProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileProfession.textContent;
-}
-
-function formSubmitHandler (evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileProfession.textContent = jobInput.value;
-  toggleModalWindow(popupTypeProfile);
-}
-formElement.addEventListener('submit', formSubmitHandler);
-
 //consts for modal new cards
 const formElementNewCard = popupNewCard.querySelector('.popup__content_type_card');
 const namePlaceInputNewCard = popupNewCard.querySelector('.popup__input_type_place');
@@ -52,54 +34,50 @@ const buttomSaveNewCard = popupNewCard.querySelector('.popup__save_type_card');
 const photoCard = document.querySelector('.cards__photo');
 const nameCard = document.querySelector('.cards__text');
 
-function formSubmitHandlerNewCard (evt) {
-  evt.preventDefault();
-  insertCardItem({
-    name: namePlaceInputNewCard.value,
-    link: linkInputNewCard.value
-  });
-  toggleModalWindow(popupNewCard);
-}
-formElementNewCard.addEventListener('submit', formSubmitHandlerNewCard);
-
 //consts for modal Image
 const popupFigure =popupTypeImage.querySelector('.popup__figure');
 const popupImage = popupTypeImage.querySelector('.popup__image');
 const popupFigcaption = popupTypeImage.querySelector('.popup__figcaption');
 
+//consts for template
+const cardsBox = document.querySelector('.cards');
+const templateCardItem = document.querySelector('.cards-template').content.querySelector('.cards__container');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+function toggleModalWindow(modal) {
+  const form = modal.querySelector('.popup__form');
+  buttomSaveNewCard.setAttribute('disabled', true);
+  modal.classList.toggle('popup_opened');
+  document.addEventListener('keydown', function (evt) {
+      if (evt.key === 'Escape') {
+        toggleModalWindow(modal)
+      }
+    });
+}
 
-initialCards.forEach(element => {insertCardItem(element)})
+function openPopupProfile() {
+  toggleModalWindow(popupTypeProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileProfession.textContent;
+}
 
-function insertCardItem(element) {
-  const cardsBox = document.querySelector('.cards');
-  const templateCardItem = document.querySelector('.cards-template').content.querySelector('.cards__container');
+function submitHandlerForm (evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileProfession.textContent = jobInput.value;
+  toggleModalWindow(popupTypeProfile);
+}
+
+function submitHandlerFormNewCard (evt) {
+  evt.preventDefault();
+  createCard({
+    name: namePlaceInputNewCard.value,
+    link: linkInputNewCard.value
+  });
+  toggleModalWindow(popupNewCard);
+  formElementNewCard.reset()
+}
+
+function createCard(element) {
   const cardItem = templateCardItem.cloneNode(true);
   const deleteCardButton = cardItem.querySelector('.cards__button-delete');
   const photoCard  = cardItem.querySelector('.cards__photo');
@@ -109,40 +87,31 @@ function insertCardItem(element) {
 
   nameCard.textContent = element.name;
   photoCard.src = element.link;
+  photoCard.alt ="Здесь должно быть красивое фото";
 
   deleteCardButton.addEventListener('click', () => cardItem.remove())
   likeCardButton.addEventListener('click', function (evt) {
     evt.target.classList.toggle('cards__button_color_black');
   });
-  photoCard.addEventListener('click', () => imageClickHandler(element));
-  cardsBox.append(cardItem);
+  photoCard.addEventListener('click', () => clickHandlerImage(element));
+  cardsBox.prepend(cardItem);
 }
 
-function imageClickHandler (element) {
+//функция добавления карточки
+function addCard(element){
+  cardsBox.prepend(element);
+}
+
+function clickHandlerImage (element) {
   popupImage.src = element.link;
   popupFigcaption.textContent = element.name;
+  popupImage.alt ="Здесь должно быть красивое фото";
   toggleModalWindow(popupTypeImage);
 }
 
-function closePopup (modal) {
-  modal.classList.remove('popup_opened')
-}
-
-document.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Escape') {
-    closePopup(popupTypeProfile)
-  }
-});
-document.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Escape') {
-    closePopup(popupNewCard)
-  }
-});
-document.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Escape') {
-    closePopup(popupTypeImage)
-  }
-});
+formElement.addEventListener('submit', submitHandlerForm);
+formElementNewCard.addEventListener('submit', submitHandlerFormNewCard);
+initialCards.forEach(element => {createCard(element)});
 
 openPopupButtonProfile.addEventListener('click', openPopupProfile);
 openPopupButtonNewCard.addEventListener('click', () => toggleModalWindow(popupNewCard));
@@ -154,4 +123,3 @@ popupImageCloseButton.addEventListener('click', () => toggleModalWindow(popupTyp
 popupOverlayProfile.addEventListener('click', () => toggleModalWindow(popupTypeProfile));
 popupOverlayNewCard.addEventListener('click', () => toggleModalWindow(popupNewCard));
 popupOverlayImage.addEventListener('click', () => toggleModalWindow(popupTypeImage));
-
