@@ -43,15 +43,16 @@ const popupFigcaption = popupTypeImage.querySelector('.popup__figcaption');
 const cardsBox = document.querySelector('.cards');
 const templateCardItem = document.querySelector('.cards-template').content.querySelector('.cards__container');
 
+function closePopupEsc (evt) {
+  if (evt.key === 'Escape') {
+    const closeOnEscape = document.querySelector('.popup_opened')
+    toggleModalWindow(closeOnEscape)
+  }
+}
+
 function toggleModalWindow(modal) {
-  const form = modal.querySelector('.popup__form');
-  buttomSaveNewCard.setAttribute('disabled', true);
   modal.classList.toggle('popup_opened');
-  document.addEventListener('keydown', function (evt) {
-      if (evt.key === 'Escape') {
-        toggleModalWindow(modal)
-      }
-    });
+  document.addEventListener("keydown", closePopupEsc);
 }
 
 function openPopupProfile() {
@@ -65,18 +66,19 @@ function submitHandlerForm (evt) {
   profileName.textContent = nameInput.value;
   profileProfession.textContent = jobInput.value;
   toggleModalWindow(popupTypeProfile);
+  buttomSaveNewCard.setAttribute('disabled', true);
 }
 
 function submitHandlerFormNewCard (evt) {
   evt.preventDefault();
-  createCard({
+  addCard(createCard({
     name: namePlaceInputNewCard.value,
     link: linkInputNewCard.value
-  });
+  }));
   toggleModalWindow(popupNewCard);
   formElementNewCard.reset()
 }
-
+//функция coздания карточки
 function createCard(element) {
   const cardItem = templateCardItem.cloneNode(true);
   const deleteCardButton = cardItem.querySelector('.cards__button-delete');
@@ -87,14 +89,15 @@ function createCard(element) {
 
   nameCard.textContent = element.name;
   photoCard.src = element.link;
-  photoCard.alt ="Здесь должно быть красивое фото";
+  photoCard.alt = element.name;
 
   deleteCardButton.addEventListener('click', () => cardItem.remove())
   likeCardButton.addEventListener('click', function (evt) {
     evt.target.classList.toggle('cards__button_color_black');
   });
   photoCard.addEventListener('click', () => clickHandlerImage(element));
-  cardsBox.prepend(cardItem);
+  buttomSaveNewCard.setAttribute('disabled', true);
+  return cardItem;
 }
 
 //функция добавления карточки
@@ -105,13 +108,13 @@ function addCard(element){
 function clickHandlerImage (element) {
   popupImage.src = element.link;
   popupFigcaption.textContent = element.name;
-  popupImage.alt ="Здесь должно быть красивое фото";
+  popupImage.alt = element.name;
   toggleModalWindow(popupTypeImage);
 }
 
 formElement.addEventListener('submit', submitHandlerForm);
 formElementNewCard.addEventListener('submit', submitHandlerFormNewCard);
-initialCards.forEach(element => {createCard(element)});
+initialCards.forEach(element => {addCard(createCard(element))});
 
 openPopupButtonProfile.addEventListener('click', openPopupProfile);
 openPopupButtonNewCard.addEventListener('click', () => toggleModalWindow(popupNewCard));
