@@ -43,20 +43,25 @@ const popupFigcaption = popupTypeImage.querySelector('.popup__figcaption');
 const cardsBox = document.querySelector('.cards');
 const templateCardItem = document.querySelector('.cards-template').content.querySelector('.cards__container');
 
-function closePopupEsc (evt) {
-  if (evt.key === 'Escape') {
-    const closeOnEscape = document.querySelector('.popup_opened')
-    toggleModalWindow(closeOnEscape)
-  }
-}
-
-function toggleModalWindow(modal) {
-  modal.classList.toggle('popup_opened');
+function openPopup(modal) {
+  modal.classList.add('popup_opened');
   document.addEventListener("keydown", closePopupEsc);
 }
 
+function closePopup(modal) {
+  modal.classList.remove('popup_opened');
+  document.removeEventListener("keydown", closePopupEsc);
+}
+
+function closePopupEsc (evt) {
+  if (evt.key === 'Escape') {
+    const closeOnEscape = document.querySelector('.popup_opened')
+    closePopup(closeOnEscape)
+  }
+}
+
 function openPopupProfile() {
-  toggleModalWindow(popupTypeProfile);
+  openPopup(popupTypeProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileProfession.textContent;
 }
@@ -65,7 +70,7 @@ function submitHandlerForm (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileProfession.textContent = jobInput.value;
-  toggleModalWindow(popupTypeProfile);
+  closePopup(popupTypeProfile);
   buttomSaveNewCard.setAttribute('disabled', true);
 }
 
@@ -75,7 +80,7 @@ function submitHandlerFormNewCard (evt) {
     name: namePlaceInputNewCard.value,
     link: linkInputNewCard.value
   }));
-  toggleModalWindow(popupNewCard);
+  closePopup(popupNewCard);
   formElementNewCard.reset()
 }
 //функция coздания карточки
@@ -109,7 +114,7 @@ function clickHandlerImage (element) {
   popupImage.src = element.link;
   popupFigcaption.textContent = element.name;
   popupImage.alt = element.name;
-  toggleModalWindow(popupTypeImage);
+  openPopup(popupTypeImage);
 }
 
 formElement.addEventListener('submit', submitHandlerForm);
@@ -117,12 +122,12 @@ formElementNewCard.addEventListener('submit', submitHandlerFormNewCard);
 initialCards.forEach(element => {addCard(createCard(element))});
 
 openPopupButtonProfile.addEventListener('click', openPopupProfile);
-openPopupButtonNewCard.addEventListener('click', () => toggleModalWindow(popupNewCard));
+openPopupButtonNewCard.addEventListener('click', () => openPopup(popupNewCard));
 
-closePopupButtonProfile.addEventListener('click', () => toggleModalWindow(popupTypeProfile));
-closePopupButtonNewCard.addEventListener('click', () => toggleModalWindow(popupNewCard));
-popupImageCloseButton.addEventListener('click', () => toggleModalWindow(popupTypeImage));
+closePopupButtonProfile.addEventListener('click', () => closePopup(popupTypeProfile));
+closePopupButtonNewCard.addEventListener('click', () => closePopup(popupNewCard));
+popupImageCloseButton.addEventListener('click', () => closePopup(popupTypeImage));
 
-popupOverlayProfile.addEventListener('click', () => toggleModalWindow(popupTypeProfile));
-popupOverlayNewCard.addEventListener('click', () => toggleModalWindow(popupNewCard));
-popupOverlayImage.addEventListener('click', () => toggleModalWindow(popupTypeImage));
+popupOverlayProfile.addEventListener('click', () => closePopup(popupTypeProfile));
+popupOverlayNewCard.addEventListener('click', () => closePopup(popupNewCard));
+popupOverlayImage.addEventListener('click', () => closePopup(popupTypeImage));
