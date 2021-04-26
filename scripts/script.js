@@ -1,5 +1,5 @@
-
-// choose modals
+import {Card} from './Card.js';
+// choose modalsexport
 const popupTypeProfile = document.querySelector('.popup_type_profile');
 const popupNewCard = document.querySelector('.popup_type_card');
 const popupTypeImage = document.querySelector('.popup_type_image');
@@ -41,9 +41,9 @@ const popupFigcaption = popupTypeImage.querySelector('.popup__figcaption');
 
 //consts for template
 const cardsBox = document.querySelector('.cards');
-const templateCardItem = document.querySelector('.cards-template').content.querySelector('.cards__container');
+// const templateCardItem = document.querySelector('.cards-template').content.querySelector('.cards__container');
 
-function openPopup(modal) {
+export function openPopup(modal) {
   modal.classList.add('popup_opened');
   document.addEventListener("keydown", closePopupEsc);
 }
@@ -76,50 +76,34 @@ function submitHandlerForm (evt) {
 
 function submitHandlerFormNewCard (evt) {
   evt.preventDefault();
-  addCard(createCard({
+  const card = new Card({
     name: namePlaceInputNewCard.value,
     link: linkInputNewCard.value
-  }));
+  }, '.cards-template');
+  addCard(card);
   closePopup(popupNewCard);
   formElementNewCard.reset()
 }
-//функция coздания карточки
-function createCard(element) {
-  const cardItem = templateCardItem.cloneNode(true);
-  const deleteCardButton = cardItem.querySelector('.cards__button-delete');
-  const photoCard  = cardItem.querySelector('.cards__photo');
-  const cardDivName = cardItem.querySelector('.cards__name');
-  const nameCard = cardItem.querySelector('.cards__text');
-  const likeCardButton = cardItem.querySelector('.cards__button');
 
-  nameCard.textContent = element.name;
-  photoCard.src = element.link;
-  photoCard.alt = element.name;
-
-  deleteCardButton.addEventListener('click', () => cardItem.remove())
-  likeCardButton.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('cards__button_color_black');
-  });
-  photoCard.addEventListener('click', () => clickHandlerImage(element));
-  buttomSaveNewCard.setAttribute('disabled', true);
-  return cardItem;
+function addCard(card) {
+const cardElement = card.createCard();
+cardsBox.prepend(cardElement);
 }
 
-//функция добавления карточки
-function addCard(element){
-  cardsBox.prepend(element);
-}
-
-function clickHandlerImage (element) {
+export function clickHandlerImage (element) {
   popupImage.src = element.link;
   popupFigcaption.textContent = element.name;
   popupImage.alt = element.name;
   openPopup(popupTypeImage);
 }
+initialCards.forEach((item) => {
+  const card = new Card(item, '.cards-template');
+  const cardElement = card.createCard();
+  document.querySelector('.cards').prepend(cardElement);
+});
 
 formElement.addEventListener('submit', submitHandlerForm);
 formElementNewCard.addEventListener('submit', submitHandlerFormNewCard);
-initialCards.forEach(element => {addCard(createCard(element))});
 
 openPopupButtonProfile.addEventListener('click', openPopupProfile);
 openPopupButtonNewCard.addEventListener('click', () => openPopup(popupNewCard));
