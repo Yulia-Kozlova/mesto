@@ -1,9 +1,6 @@
-import {openPopup} from './script.js';
-const popupTypeImage = document.querySelector('.popup_type_image');
-const popupImage = popupTypeImage.querySelector('.popup__image');
-const popupFigcaption = popupTypeImage.querySelector('.popup__figcaption');
+import {clickHandlerImage} from './script.js';
 
-export class Card {
+export default class Card {
 	constructor(data, cardSelector) {
     this._text = data.name;
 		this._image = data.link;
@@ -22,8 +19,8 @@ export class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
     this._element.querySelector('.cards__photo').src = this._image;
-    // this._element.querySelector('.cards__photo').style.backgroundImage = `url(${this._image})`;
   	this._element.querySelector('.cards__text').textContent = this._text;
+    this._element.querySelector('.cards__text').alt = this._text;
   	return this._element;
 }
 _setEventListeners() {
@@ -34,14 +31,14 @@ _setEventListeners() {
     this._element.remove();
   });
   this._element.querySelector('.cards__photo').addEventListener('click', () => {
-  this._clickHandlerImage();
+  clickHandlerImage({ link: this._image, name: this._text });
   });
-  const buttomSaveNewCard = document.querySelector('.popup__save_type_card');
-  buttomSaveNewCard.setAttribute('disabled', true);
 }
+
 _handleLikeClick() {
   this._element.querySelector('.cards__button').classList.toggle('cards__button_color_black');
 }
+
 _clickHandlerImage () {
   popupImage.src = this._image;
   popupFigcaption.textContent = this._text;
@@ -49,10 +46,4 @@ _clickHandlerImage () {
   openPopup(popupTypeImage);
 }
 }
-// initialCards.forEach((item) => {
-  // const card = new Card(item, '.cards-template');
-  // const cardElement = card.createCard();
 
-  // Добавляем в DOM
-//   document.querySelector('.cards').append(cardElement);
-// });
