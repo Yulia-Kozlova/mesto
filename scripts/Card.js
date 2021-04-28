@@ -38,12 +38,5 @@ _setEventListeners() {
 _handleLikeClick() {
   this._element.querySelector('.cards__button').classList.toggle('cards__button_color_black');
 }
-
-_clickHandlerImage () {
-  popupImage.src = this._image;
-  popupFigcaption.textContent = this._text;
-  popupImage.alt = this._text;
-  openPopup(popupTypeImage);
-}
 }
 
